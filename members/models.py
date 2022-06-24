@@ -1,4 +1,5 @@
 from django.db import models
+from assessments.models import Assessment
 
 
 class Member(models.Model):
@@ -29,9 +30,17 @@ class Member(models.Model):
     last_name = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=10, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
+    assessment = models.ForeignKey(
+        Assessment,
+        on_delete=models.CASCADE,
+    )
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+    class Meta:
+        verbose_name = "Airman"
+        verbose_name_plural = "Airmen"
 
 
 class PhysicalTrainingLeader(models.Model):
@@ -45,7 +54,7 @@ class PhysicalTrainingLeader(models.Model):
 
     class Meta:
         verbose_name = "PTL"
-        verbose_name_plural = "PTL Team"
+        verbose_name_plural = "Physical Training Leader Team"
 
     def __str__(self):
         return self.airman
@@ -62,7 +71,7 @@ class UnitFitnessProgramManager(models.Model):
 
     class Meta:
         verbose_name = "UFPM"
-        verbose_name_plural = "UFPM Team"
+        verbose_name_plural = "Unit Fitness Program Manager Team"
 
     def __str__(self):
         return self.airman

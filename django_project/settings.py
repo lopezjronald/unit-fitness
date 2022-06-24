@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "pages.apps.PagesConfig",
     "apis.apps.ApisConfig",
     "members.apps.MembersConfig",
+    "assessments.apps.AssessmentsConfig",
+    "paperwork.apps.PaperworkConfig",
 ]
 
 MIDDLEWARE = [
