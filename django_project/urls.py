@@ -20,6 +20,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("assessment/", include("assessments.urls")),
+    path("documents/", include("documents.urls")),
+    path("videos/", include("videos.urls")),
     path("apis/", include("apis.urls")),
+    path("members/", include("members.urls")),
     path("", include("pages.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

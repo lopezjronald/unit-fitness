@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from assessments.models import Assessment
 
 
@@ -30,13 +32,12 @@ class Member(models.Model):
     last_name = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=10, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
-    assessment = models.ForeignKey(
-        Assessment,
-        on_delete=models.CASCADE,
-    )
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+    def get_absolute_url(self):
+        return reverse("member_detail", kwargs={"pk": self.pk})
 
     class Meta:
         verbose_name = "Airman"

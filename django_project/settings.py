@@ -41,13 +41,15 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # 3rd party
     "rest_framework",
+    "fontawesomefree",
     # local
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
     "apis.apps.ApisConfig",
     "members.apps.MembersConfig",
     "assessments.apps.AssessmentsConfig",
-    "paperwork.apps.PaperworkConfig",
+    "documents.apps.DocumentsConfig",
+    "videos.apps.VideosConfig",
 ]
 
 MIDDLEWARE = [
@@ -83,9 +85,7 @@ WSGI_APPLICATION = "django_project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    "default": env.dj_db_url("DATABASE_URL")
-}
+DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -119,7 +119,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"

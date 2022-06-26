@@ -1,0 +1,12 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ member.first_name }} {{ member.last_name }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ member.rank }} {{ member.first_name }} {{ member.last_name }}</h1>
+        <hr>
+        <p>{{ member.email }}</p>
+        <p>{{ member.phone_number }}</p>
+    </div>
+{% endblock %}

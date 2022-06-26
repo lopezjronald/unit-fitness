@@ -1,10 +1,9 @@
 from django.contrib import admin
-from .models import Assessment
-from members.models import Member
+from .models import Assessment, Tester
 
 
-class MemberInline(admin.TabularInline):
-    model = Member
+class TesterInline(admin.TabularInline):
+    model = Tester
     extra = 0
     verbose_name = "Airman"
     verbose_name_plural = "Airmen"
@@ -12,7 +11,7 @@ class MemberInline(admin.TabularInline):
 
 class AssessmentAdmin(admin.ModelAdmin):
     inlines = [
-        MemberInline,
+        TesterInline,
     ]
     list_display = ("date", "time")
 
