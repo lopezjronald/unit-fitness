@@ -1,0 +1,63 @@
+{% extends "_base.html" %}
+
+{% block title %}349th ASTS Bulletins{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="display-4 mt-5 mb-3">UTA: Bulletin Page</h1>
+        {% if user.is_authenticated %}
+            <div class="fs-5 mb-2">
+                <a href="{% url 'bulletin_new' %}" class="text-decoration-none">+ Create Bulletin</a>
+            </div>
+        {% endif %}
+        {% for bulletin in bulletin_list %}
+            <div class="fs-2"><a class="text-dark text-decoration-none" href="{{ bulletin.url }}"
+                                 target="_blank">{{ bulletin }}</a>
+            </div>
+
+            <div class="fs-2">
+                <div class="row">
+                    <div class="col-1">
+                        <form method="GET" action="{{ bulletin.url }}">
+                            <input class="btn btn-secondary" type="submit" value="View">
+                        </form>
+                    </div>
+                    {% if user.is_authenticated %}
+                        <div class="col-1">
+                            <form method="GET" action="{% url 'bulletin_edit' bulletin.pk %}">
+                                <input class="btn btn-success" type="submit" value="Edit">
+                            </form>
+                        </div>
+                        <div class="col-1">
+                            <form action="{% url 'bulletin_delete' bulletin.pk %}">
+                                <input class="btn btn-danger" type="submit" value="Delete">
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+                <br class="py-3">
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if bulletin_list %}
+        {% if is_paginated %}
+            <div class="container text-center">
+                <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/documents/bulletin?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/documents/bulletin?page={{ page_obj.next_page_number }}">Next</a>
+                {% endif %}
+            </span>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

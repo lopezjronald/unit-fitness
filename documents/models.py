@@ -33,4 +33,8 @@ class Bulletin(models.Model):
         ordering = ("-start_date",)
 
     def __str__(self):
-        return f"UTA: {self.start_date.month}"
+        # This string returns a formatted date: month name and year, Ex: June 2022
+        return f"{self.start_date.strftime('%B')} {self.start_date.strftime('%Y')}"
+
+    def get_absolute_url(self):
+        return reverse("bulletin_list")

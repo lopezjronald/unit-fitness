@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Create Bulletin{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="display-4 mt-5 mb-3">Enter New Bulletin Page</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" class="btn btn-lg btn-success" value="Save">
+        </form>
+    </div>
+{% endblock %}
