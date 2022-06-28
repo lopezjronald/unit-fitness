@@ -1,0 +1,54 @@
+{% extends "_base.html" %}
+
+{% block title %}349th ASTS Assessments{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="display-4 mt-5 mb-3">Mock & Diagnostic Assessments</h1>
+        <div class="fs-5 mb-2">
+            <a href="{% url 'assessment_new' %}" class="text-decoration-none">+ Create Assessment</a>
+        </div>
+        {% for assessment in assessment_list %}
+            <div class="fs-2"><a class="text-dark text-decoration-none"
+                                 href="{% url 'assessment_detail' assessment.pk %}">{{ assessment }}</a>
+            </div>
+
+            <div class="fs-2">
+                <div class="row">
+                    <div class="col-1">
+                        <form method="GET" action="{% url 'assessment_edit' assessment.pk %}">
+                            <input class="btn btn-success" type="submit" value="Edit">
+                        </form>
+                    </div>
+                    <div class="col-1">
+                        <form action="{% url 'assessment_delete' assessment.pk %}">
+                            <input class="btn btn-danger" type="submit" value="Delete">
+                        </form>
+                    </div>
+                </div>
+                <br class="py-3">
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if assessment_list %}
+        {% if is_paginated %}
+            <div class="container text-center">
+                <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/assessments?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/assessments?page={{ page_obj.next_page_number }}">Next</a>
+                {% endif %}
+            </span>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

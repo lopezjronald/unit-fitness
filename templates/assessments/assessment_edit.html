@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit {{ assessment }}{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="fs-2 mb-3">{{ assessment }}</div>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Save" class="btn btn-success mt-2">
+        </form>
+    </div>
+{% endblock %}

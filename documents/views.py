@@ -16,6 +16,7 @@ class BulletinListView(ListView):
 
 class BulletinDetailView(DetailView):
     model = Bulletin
+    template_name = "documents/bulletin_detail.html"
 
 
 class BulletinUpdateView(UpdateView):

@@ -1,0 +1,13 @@
+{% extends "_base.html" %}
+
+{% block title %}Video List{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="display-4">Video List</div>
+        <hr>
+        {% for video in video_list %}
+            <div class="display-4 fs-2">{{ video.title }}</div>
+        {% endfor %}
+    </div>
+{% endblock %}
