@@ -5,9 +5,52 @@
 {% block content %}
     <div class="container mt-5">
         <div class="display-4">Video List</div>
+        {% if user.is_authenticated %}
+            <div class="fs-5 my-2">
+                <a href="{% url 'video_new' %}" class="text-decoration-none">+ Create Video</a>
+            </div>
+        {% endif %}
         <hr>
         {% for video in video_list %}
-            <div class="display-4 fs-2">{{ video.title }}</div>
+            <div class="display-4 fs-2 mb-3"><a href="{% url 'video_detail' video.pk %}"
+                                                class="text-decoration-none">{{ video.title }}</a></div>
+            {% if user.is_authenticated %}
+                <div class="fs-2">
+                    <div class="row">
+                        <div class="col-1">
+                            <form action="{% url 'video_edit' video.pk %}">
+                                <input class="btn btn-success" type="submit" value="Edit">
+                            </form>
+                        </div>
+                        <div class="col-1">
+                            <form action="{% url 'video_delete' video.pk %}">
+                                <input class="btn btn-danger" type="submit" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <br class="py-3">
+            {% endif %}
         {% endfor %}
     </div>
+
+    {% if video_list %}
+        {% if is_paginated %}
+            <div class="container text-center">
+                <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                {% endif %}
+            </span>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
 {% endblock %}

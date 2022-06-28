@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+
+{% block title %}Delete Assessment{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="display-3 mt-5 mb-3">Delete Video</div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="fs-5">Are you sure you want to delete the {{ video }} video?</div>
+            <input type="Submit" value="Confirm" class="btn btn-danger mt-3">
+        </form>
+    </div>
+{% endblock %}
