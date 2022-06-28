@@ -1,0 +1,18 @@
+{% extends "_base.html" %}
+
+{% block title %}Google Forms{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="container">
+            <div class="display-4">Google Forms</div>
+            <hr>
+            {% for google_form in google_form_list %}
+                {% if google_form.type == "Google Form" %}
+                    <div class="display-4 fs-4 pb-3"><a href="{{ google_form.url }}" target="_blank"
+                                                        class="text-decoration-none">{{ google_form.title }}</a></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -7,7 +7,7 @@ class Document(models.Model):
         ("Appointment Letter", "Appointment Letter"),
         ("Google Form", "Google Form"),
         ("Information", "Information"),
-        ("PT Form", "PT Form"),
+        ("Testing Form", "Testing Form"),
     ]
     title = models.CharField(max_length=500)
     description = models.TextField(blank=True, null=True)
