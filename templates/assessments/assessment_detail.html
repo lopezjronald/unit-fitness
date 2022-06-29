@@ -1,4 +1,5 @@
 {% extends "_base.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}{{ assessment }}{% endblock %}
 
@@ -21,6 +22,14 @@
                 </div>
             </div>
         <hr>
+
+        <h4>Add Tester</h4>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-success" type="submit">Save</button>
+        </form>
+
         <div class="fs-2 my-3">Testers</div>
         {% if assessment.tester_set.count != 0 %}
             {% for tester in assessment.tester_set.all %}
