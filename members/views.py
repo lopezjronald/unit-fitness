@@ -1,24 +1,25 @@
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import UnitFitnessAssessmentCell, UnitFitnessProgramManager, PhysicalTrainingLeader
 
 
 # PTL views
-class PhysicalTrainingLeaderListView(ListView):
+class PhysicalTrainingLeaderListView(LoginRequiredMixin, ListView):
     model = PhysicalTrainingLeader
     template_name = "members/ptls/ptl_list.html"
     context_object_name = "ptl_list"
     paginate_by = 5
 
 
-class PhysicalTrainingLeaderDetailView(DetailView):
+class PhysicalTrainingLeaderDetailView(LoginRequiredMixin, DetailView):
     model = PhysicalTrainingLeader
     template_name = "members/ptls/ptl_detail.html"
     context_object_name = "ptl"
 
 
-class PhysicalTrainingLeaderCreateView(CreateView):
+class PhysicalTrainingLeaderCreateView(LoginRequiredMixin, CreateView):
     model = PhysicalTrainingLeader
     template_name = "members/ptls/ptl_new.html"
     fields = ["rank",
@@ -32,7 +33,7 @@ class PhysicalTrainingLeaderCreateView(CreateView):
               "appointment_letter"]
 
 
-class PhysicalTrainingLeaderUpdateView(UpdateView):
+class PhysicalTrainingLeaderUpdateView(LoginRequiredMixin, UpdateView):
     model = PhysicalTrainingLeader
     template_name = "members/ptls/ptl_edit.html"
     fields = (
@@ -48,27 +49,27 @@ class PhysicalTrainingLeaderUpdateView(UpdateView):
     )
 
 
-class PhysicalTrainingLeaderDeleteView(DeleteView):
+class PhysicalTrainingLeaderDeleteView(LoginRequiredMixin, DeleteView):
     model = PhysicalTrainingLeader
     template_name = "members/ptls/ptl_delete.html"
     success_url = reverse_lazy("ptl_list")
 
 
 # UFPM views
-class UnitFitnessProgramManagerListView(ListView):
+class UnitFitnessProgramManagerListView(LoginRequiredMixin, ListView):
     model = UnitFitnessProgramManager
     template_name = "members/ufpms/ufpm_list.html"
     context_object_name = "ufpm_list"
     paginate_by = 5
 
 
-class UnitFitnessProgramManagerDetailView(DetailView):
+class UnitFitnessProgramManagerDetailView(LoginRequiredMixin, DetailView):
     model = UnitFitnessProgramManager
     template_name = "members/ufpms/ufpm_detail.html"
     context_object_name = "ufpm"
 
 
-class UnitFitnessProgramManagerCreateView(CreateView):
+class UnitFitnessProgramManagerCreateView(LoginRequiredMixin, CreateView):
     model = UnitFitnessProgramManager
     template_name = "members/ufpms/ufpm_new.html"
     fields = ["rank",
@@ -82,7 +83,7 @@ class UnitFitnessProgramManagerCreateView(CreateView):
               "written_order"]
 
 
-class UnitFitnessProgramManagerUpdateView(UpdateView):
+class UnitFitnessProgramManagerUpdateView(LoginRequiredMixin, UpdateView):
     model = UnitFitnessProgramManager
     template_name = "members/ufpms/ufpm_edit.html"
     fields = (
@@ -98,27 +99,27 @@ class UnitFitnessProgramManagerUpdateView(UpdateView):
     )
 
 
-class UnitFitnessProgramManagerDeleteView(DeleteView):
+class UnitFitnessProgramManagerDeleteView(LoginRequiredMixin, DeleteView):
     model = UnitFitnessProgramManager
     template_name = "members/ufpms/ufpm_delete.html"
     success_url = reverse_lazy("ufpm_list")
 
 
 # UFAC views
-class UnitFitnessAssessmentCellListView(ListView):
+class UnitFitnessAssessmentCellListView(LoginRequiredMixin, ListView):
     model = UnitFitnessAssessmentCell
     template_name = "members/ufacs/ufac_list.html"
     context_object_name = "ufac_list"
     paginate_by = 5
 
 
-class UnitFitnessAssessmentCellDetailView(DetailView):
+class UnitFitnessAssessmentCellDetailView(LoginRequiredMixin, DetailView):
     model = UnitFitnessAssessmentCell
     template_name = "members/ufacs/ufac_detail.html"
     context_object_name = "ufac"
 
 
-class UnitFitnessAssessmentCellCreateView(CreateView):
+class UnitFitnessAssessmentCellCreateView(LoginRequiredMixin, CreateView):
     model = UnitFitnessAssessmentCell
     template_name = "members/ufacs/ufac_new.html"
     fields = ["physical_training_leader",
@@ -128,7 +129,7 @@ class UnitFitnessAssessmentCellCreateView(CreateView):
               "user_agreement"]
 
 
-class UnitFitnessAssessmentCellUpdateView(UpdateView):
+class UnitFitnessAssessmentCellUpdateView(LoginRequiredMixin, UpdateView):
     model = UnitFitnessAssessmentCell
     template_name = "members/ufacs/ufac_edit.html"
     fields = ("physical_training_leader",
@@ -139,7 +140,7 @@ class UnitFitnessAssessmentCellUpdateView(UpdateView):
               )
 
 
-class UnitFitnessAssessmentCellDeleteView(DeleteView):
+class UnitFitnessAssessmentCellDeleteView(LoginRequiredMixin, DeleteView):
     model = UnitFitnessAssessmentCell
     template_name = "members/ufacs/ufac_delete.html"
     success_url = reverse_lazy("ufac_list")

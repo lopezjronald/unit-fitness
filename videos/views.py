@@ -1,6 +1,8 @@
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
 from .models import Video
 
 
@@ -17,7 +19,7 @@ class VideoDetailView(DetailView):
     context_object_name = "video"
 
 
-class VideoCreateView(CreateView):
+class VideoCreateView(LoginRequiredMixin, CreateView):
     model = Video
     template_name = "videos/video_new.html"
     fields = [
@@ -28,7 +30,7 @@ class VideoCreateView(CreateView):
     ]
 
 
-class VideoUpdateView(UpdateView):
+class VideoUpdateView(LoginRequiredMixin, UpdateView):
     model = Video
     fields = (
         "title",
@@ -39,7 +41,7 @@ class VideoUpdateView(UpdateView):
     template_name = "videos/video_edit.html"
 
 
-class VideoDeleteView(DeleteView):
+class VideoDeleteView(LoginRequiredMixin, DeleteView):
     model = Video
     template_name = "videos/video_delete.html"
     success_url = reverse_lazy("video_list")

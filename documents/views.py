@@ -1,6 +1,8 @@
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
 from .models import Bulletin, Document
 
 
@@ -18,13 +20,13 @@ class BulletinDetailView(DetailView):
     context_object_name = "bulletin"
 
 
-class BulletinCreateView(CreateView):
+class BulletinCreateView(LoginRequiredMixin, CreateView):
     model = Bulletin
     template_name = "documents/bulletin/bulletin_new.html"
     fields = ["start_date", "end_date", "url"]
 
 
-class BulletinUpdateView(UpdateView):
+class BulletinUpdateView(LoginRequiredMixin, UpdateView):
     model = Bulletin
     fields = (
         "start_date",
@@ -34,7 +36,7 @@ class BulletinUpdateView(UpdateView):
     template_name = "documents/bulletin/bulletin_edit.html"
 
 
-class BulletinDeleteView(DeleteView):
+class BulletinDeleteView(LoginRequiredMixin, DeleteView):
     model = Bulletin
     template_name = "documents/bulletin/bulletin_delete.html"
     success_url = reverse_lazy("bulletin_list")
@@ -101,13 +103,13 @@ class DocumentDetailView(DetailView):
     context_object_name = "document"
 
 
-class DocumentCreatView(CreateView):
+class DocumentCreatView(LoginRequiredMixin, CreateView):
     model = Document
     template_name = "documents/document_new.html"
     fields = ["title", "description", "type", "url", "embedded_url"]
 
 
-class DocumentUpdateView(UpdateView):
+class DocumentUpdateView(LoginRequiredMixin, UpdateView):
     model = Document
     fields = (
         "title",
@@ -119,7 +121,7 @@ class DocumentUpdateView(UpdateView):
     template_name = "documents/document_edit.html"
 
 
-class DocumentDeleteView(DeleteView):
+class DocumentDeleteView(LoginRequiredMixin, DeleteView):
     model = Document
     template_name = "documents/document_delete.html"
     success_url = reverse_lazy("home")
