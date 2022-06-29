@@ -95,6 +95,12 @@ class InformationDetailView(DetailView):
 
 
 # Document Views
+class DocumentDetailView(DetailView):
+    model = Document
+    template_name = "documents/document_detail.html"
+    context_object_name = "document"
+
+
 class DocumentCreatView(CreateView):
     model = Document
     template_name = "documents/document_new.html"

@@ -44,9 +44,7 @@ class Member(models.Model):
         verbose_name_plural = "Airmen"
 
 
-class PhysicalTrainingLeader(models.Model):
-    airman = models.ForeignKey(Member,
-                               on_delete=models.CASCADE, )
+class PhysicalTrainingLeader(Member):
     cpr_card = models.URLField(verbose_name="CPR Card URL", )
     ptl_completion_date = models.DateField(blank=True,
                                            null=True,
@@ -58,12 +56,10 @@ class PhysicalTrainingLeader(models.Model):
         verbose_name_plural = "Physical Training Leader Team"
 
     def __str__(self):
-        return self.airman
+        return f"{self.rank} {self.last_name}, {self.first_name}"
 
 
-class UnitFitnessProgramManager(models.Model):
-    airman = models.ForeignKey(Member,
-                               on_delete=models.CASCADE, )
+class UnitFitnessProgramManager(Member):
     ufpm_completion_date = models.DateField(blank=True,
                                             null=True,
                                             verbose_name="UFPM Completion Date", )
@@ -75,7 +71,7 @@ class UnitFitnessProgramManager(models.Model):
         verbose_name_plural = "Unit Fitness Program Manager Team"
 
     def __str__(self):
-        return self.airman
+        return f"{self.rank} {self.last_name}, {self.first_name}"
 
 
 class UnitFitnessAssessmentCell(models.Model):
@@ -96,4 +92,4 @@ class UnitFitnessAssessmentCell(models.Model):
         verbose_name_plural = "Unit Fitness Assessment Cell Team"
 
     def __str__(self):
-        return self.physical_training_leader
+        return f"{self.physical_training_leader}"
