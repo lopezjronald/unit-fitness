@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+
+{% block title %}Delete {{ document }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="display-3 mt-5 mb-3">Delete {{ document }}</div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="fs-5">Are you sure you want delete the {{ document }} document?</div>
+            <input type="Submit" value="Confirm" class="btn btn-danger mt-3">
+        </form>
+    </div>
+{% endblock %}

@@ -1,4 +1,5 @@
 {% load static %}
+{% load admin_urls %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,6 +7,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Unit Fitness{% endblock %}</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}" />
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -26,12 +29,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{% url 'member_list' %}">Members</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'assessment_list' %}">Assessments</a>
-                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'member_list' %}">Members</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'assessment_list' %}">Assessments</a>
+                    </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'video_list' %}">Videos</a>
                 </li>
@@ -44,7 +49,8 @@
                         {% for document in document_type_list %}
                             {% if document.type == "Appointment Letter" %}
                                 <li>
-                                    <a class="dropdown-item" href="{% url 'appointment_letter_list' %}">{{ document.type }}</a>
+                                    <a class="dropdown-item"
+                                       href="{% url 'appointment_letter_list' %}">{{ document.type }}</a>
                                 </li>
                             {% elif document.type == "Google Form" %}
                                 <li>
@@ -52,11 +58,12 @@
                                 </li>
                             {% elif document.type == "Information" %}
                                 <li>
-                                    <a class="dropdown-item" href="#">{{ document.type }}</a>
+                                    <a class="dropdown-item" href="{% url 'information_list' %}">{{ document.type }}</a>
                                 </li>
                             {% elif document.type == "Testing Form" %}
                                 <li>
-                                    <a class="dropdown-item" href="#">{{ document.type }}</a>
+                                    <a class="dropdown-item"
+                                       href="{% url 'testing_form_list' %}">{{ document.type }}</a>
                                 </li>
                             {% endif %}
                         {% endfor %}
@@ -104,6 +111,9 @@
                     </li>
                     <li><a href="https://forms.gle/ucghcFDPREeZknLa9" class="text-decoration-none link-light"
                            target="_blank">Get in Touch</a></li>
+                    <li>
+                        <a href="{% url 'admin:index' %}" class="text-decoration-none link-light">Admin</a>
+                    </li>
                 </ul>
             </div>
             <div class="col social">

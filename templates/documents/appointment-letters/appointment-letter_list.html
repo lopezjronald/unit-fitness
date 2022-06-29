@@ -6,12 +6,43 @@
     <div class="container mt-5">
         <div class="container">
             <h1 class="display-4">Appointment Letters</h1>
+            {% if user.is_authenticated %}
+                <div class="fs-5 my-3">
+                    <a href="{% url 'document_new' %}" class="text-decoration-none">+ Create Appointment Letter</a>
+                </div>
+            {% endif %}
             <hr>
             {% for appointment_letter in appointment_letter_list %}
                 {% if appointment_letter.type == "Appointment Letter" %}
-                    <div class="display-4 fs-3 mb-3">
-                        <a class="text-decoration-none" href="{{ appointment_letter.url }}" target="_blank">{{ appointment_letter.title }}</a>
+                    <div class="display-3 fs-2 mb-2">
+                        <a class="text-decoration-none" href="{{ appointment_letter.url }}"
+                           target="_blank">{{ appointment_letter.title }}</a>
                     </div>
+                    {% if user.is_authenticated %}
+                        <div class="row mb-4">
+                            <div class="col-1">
+                                <div class="fs-2">
+                                    <form action="{% url 'appointment_letter_detail' appointment_letter.pk %}" method="get">
+                                        <input type="submit" value="View" class="btn btn-secondary"></input>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <div class="fs-2">
+                                    <form action="{% url 'document_edit' appointment_letter.pk %}" method="get">
+                                        <input type="submit" value="Edit" class="btn btn-primary"></input>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <div class="fs-2">
+                                    <form action="{% url 'document_delete' appointment_letter.pk %}" method="get">
+                                        <input type="submit" value="Delete" class="btn btn-danger"></input>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
         </div>
