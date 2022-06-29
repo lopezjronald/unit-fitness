@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ ufac }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="display-2 mt-5">{{ ufac }}</h1>
+        <div class="row">
+            <div class="col-1">
+                <div class="fs-2 my-3">
+                    <form action="{% url 'ufac_edit' ufac.pk %}" method="get">
+                        <input type="submit" value="Edit" class="btn btn-primary"></input>
+                    </form>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="fs-2 my-3">
+                    <form action="{% url 'ufac_delete' ufac.pk %}" method="get">
+                        <input type="submit" value="Delete" class="btn btn-danger"></input>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

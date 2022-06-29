@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Create UFPM{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="display-3 mt-5">Create UFPM</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="Submit" value="Save" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}

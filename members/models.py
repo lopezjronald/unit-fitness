@@ -30,7 +30,7 @@ class Member(models.Model):
     first_name = models.CharField(max_length=50)
     middle_name = models.CharField(max_length=50, blank=True, null=True)
     last_name = models.CharField(max_length=50)
-    phone_number = models.CharField(max_length=10, blank=True, null=True)
+    phone_number = models.CharField(max_length=10, blank=True, null=True, verbose_name="Phone #")
     email = models.EmailField(blank=True, null=True)
 
     def __str__(self):
@@ -58,6 +58,9 @@ class PhysicalTrainingLeader(Member):
     def __str__(self):
         return f"{self.rank} {self.last_name}, {self.first_name}"
 
+    def get_absolute_url(self):
+        return reverse("ptl_list")
+
 
 class UnitFitnessProgramManager(Member):
     ufpm_completion_date = models.DateField(blank=True,
@@ -72,6 +75,9 @@ class UnitFitnessProgramManager(Member):
 
     def __str__(self):
         return f"{self.rank} {self.last_name}, {self.first_name}"
+
+    def get_absolute_url(self):
+        return reverse("ufpm_list")
 
 
 class UnitFitnessAssessmentCell(models.Model):
@@ -93,3 +99,6 @@ class UnitFitnessAssessmentCell(models.Model):
 
     def __str__(self):
         return f"{self.physical_training_leader}"
+
+    def get_absolute_url(self):
+        return reverse("ufac_list")

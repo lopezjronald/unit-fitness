@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "assessments.apps.AssessmentsConfig",
     "documents.apps.DocumentsConfig",
     "videos.apps.VideosConfig",
+    "reports.apps.ReportsConfig",
 ]
 
 MIDDLEWARE = [
@@ -81,9 +82,6 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "documents.context_processors.document",
                 "documents.context_processors.document_types",
-                "members.context_processors.unit_fitness_program_manager",
-                "members.context_processors.unit_fitness_assessment_cell",
-                "members.context_processors.physical_training_leader",
             ],
         },
     },

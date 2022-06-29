@@ -31,16 +31,19 @@
             <ul class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">PTLs</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'ptl_list' %}">PTLs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">UFPMs</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'ufpm_list' %}">UFPMs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">UFACs</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'ufac_list' %}">UFACs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'assessment_list' %}">Assessments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reports</a>
                     </li>
                 {% endif %}
                 <li class="nav-item">

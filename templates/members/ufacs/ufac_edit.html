@@ -1,11 +1,11 @@
 {% extends "_base.html" %}
 {% load crispy_forms_tags %}
 
-{% block title %}Edit {{ document }}{% endblock %}
+{% block title %}Edit {{ unitfitnessassessmentcell }}{% endblock %}
 
 {% block content %}
     <div class="container mt-5">
-        <div class="fs-2 mb-3">{{ document }}</div>
+        <div class="fs-2 mb-3">{{ unitfitnessassessmentcell }}</div>
         <form action="" method="post">
             {% csrf_token %}
             {{ form|crispy }}

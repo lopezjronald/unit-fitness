@@ -1,0 +1,53 @@
+{% extends "_base.html" %}
+
+{% block title %}349th ASTS UFPMs{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="display-4 mt-5 mb-3">Unit Fitness Program Managers</h1>
+        <div class="fs-5 mb-2">
+            <a href="{% url 'ufpm_new' %}" class="text-decoration-none">+ Create UFPM</a>
+        </div>
+        <hr>
+        {% for ufpm in ufpm_list %}
+            <div class="display-4 fs-2 mb-2"><a class="text-decoration-none"
+                                                href="{% url 'ufpm_detail' ufpm.pk %}">{{ ufpm }}</a>
+            </div>
+            <div class="fs-2">
+                <div class="row mb-4">
+                    <div class="col-1">
+                        <form method="GET" action="{% url 'ufpm_edit' ufpm.pk %}">
+                            <input class="btn btn-success" type="submit" value="Edit">
+                        </form>
+                    </div>
+                    <div class="col-1">
+                        <form action="{% url 'ufpm_delete' ufpm.pk %}">
+                            <input class="btn btn-danger" type="submit" value="Delete">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if ufpm_list %}
+        {% if is_paginated %}
+            <div class="container text-center">
+                <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/members/ufpms?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/members/ufpms?page={{ page_obj.next_page_number }}">Next</a>
+                {% endif %}
+            </span>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}
