@@ -24,9 +24,10 @@ urlpatterns = [
     path("testing-forms/", views.TestingFormListView.as_view(), name="testing_form_list"),
 
     # Document urls
-    path("<int:pk>/", views.DocumentDetailView.as_view(), name="document_detail"),
     path("<int:pk>/delete/", views.DocumentDeleteView.as_view(), name="document_delete"),
     path("<int:pk>/edit/", views.DocumentUpdateView.as_view(), name="document_edit"),
+    path("<int:pk>/", views.DocumentDetailView.as_view(), name="document_detail"),
     path("new/", views.DocumentCreatView.as_view(), name="document_new"),
+    path("", views.DocumentListView.as_view(), name="all_documents"),
 
 ]

@@ -97,6 +97,12 @@ class InformationDetailView(LoginRequiredMixin, DetailView):
 
 
 # Document Views
+class DocumentListView(ListView):
+    model = Document
+    template_name = "documents/document_list.html"
+    context_object_name = "all_documents"
+
+
 class DocumentDetailView(LoginRequiredMixin, DetailView):
     model = Document
     template_name = "documents/document_detail.html"

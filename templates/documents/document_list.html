@@ -1,0 +1,40 @@
+{% extends "_base.html" %}
+
+{% block title %}All Documents{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="container">
+            <h1 class="display-4">Documents</h1>
+            {% if user.is_authenticated %}
+                <div class="fs-5 my-3">
+                    <a href="{% url 'document_new' %}" class="text-decoration-none">+ Create Document</a>
+                </div>
+            {% endif %}
+            <hr>
+            {% for document in all_documents %}
+                <div class="display-4 fs-3 mb-3">
+                    <a class="text-decoration-none" href="{{ document.url }}"
+                       target="_blank">{{ document.title }}</a>
+                </div>
+                {% if user.is_authenticated %}
+                    <div class="fs-2">
+                        <div class="row">
+                            <div class="col-1">
+                                <form action="{% url 'document_edit' document.pk %}">
+                                    <input class="btn btn-success" type="submit" value="Edit">
+                                </form>
+                            </div>
+                            <div class="col-1">
+                                <form action="{% url 'document_delete' document.pk %}">
+                                    <input class="btn btn-danger" type="submit" value="Delete">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <br class="py-3">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
