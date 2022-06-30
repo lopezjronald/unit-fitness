@@ -56,11 +56,11 @@
                             Documents
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item"
+                                   href="{% url 'all_documents' %}">All Documents</a>
+                            </li>
                             {% for document in document_type_list %}
-                                <li>
-                                    <a class="dropdown-item"
-                                       href="{% url 'all_documents' %}">All Documents</a>
-                                </li>
                                 {% if document.type == "Appointment Letter" %}
                                     <li>
                                         <a class="dropdown-item"
