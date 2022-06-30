@@ -49,7 +49,7 @@ class AppointmentLetterListView(ListView):
     context_object_name = "appointment_letter_list"
 
 
-class AppointmentLetterDetailView(DetailView):
+class AppointmentLetterDetailView(LoginRequiredMixin, DetailView):
     model = Document
     template_name = "documents/appointment-letters/appointment-letter_detail.html"
     context_object_name = "appointment_letter"
@@ -63,7 +63,7 @@ class GoogleFormListView(ListView):
     paginate_by = 5
 
 
-class GoogleFormDetailView(DetailView):
+class GoogleFormDetailView(LoginRequiredMixin, DetailView):
     model = Document
     template_name = "documents/forms/google-form_detail.html"
     context_object_name = "google_form"
@@ -76,7 +76,7 @@ class TestingFormListView(ListView):
     context_object_name = "testing_form_list"
 
 
-class TestingFormDetailView(DetailView):
+class TestingFormDetailView(LoginRequiredMixin, DetailView):
     model = Document
     template_name = "documents/forms/google-form_detail.html"
     context_object_name = "testing_form"
@@ -90,14 +90,14 @@ class InformationListView(ListView):
     paginate_by = 5
 
 
-class InformationDetailView(DetailView):
+class InformationDetailView(LoginRequiredMixin, DetailView):
     model = Document
     template_name = "documents/information/information_detail.html"
     context_object_name = "information"
 
 
 # Document Views
-class DocumentDetailView(DetailView):
+class DocumentDetailView(LoginRequiredMixin, DetailView):
     model = Document
     template_name = "documents/document_detail.html"
     context_object_name = "document"

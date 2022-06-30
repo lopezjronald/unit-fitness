@@ -6,11 +6,17 @@
     <div class="container mt-5">
         <div class="container">
             <h1 class="display-4">Testing Forms</h1>
+            {% if user.is_authenticated %}
+                <div class="fs-5 my-3">
+                    <a href="{% url 'document_new' %}" class="text-decoration-none">+ Create Appointment Letter</a>
+                </div>
+            {% endif %}
             <hr>
             {% for testing_form in testing_form_list %}
                 {% if testing_form.type == "Testing Form" %}
                     <div class="display-4 fs-3 mb-3">
-                        <a class="text-decoration-none" href="{{ testing_form.url }}" target="_blank">{{ testing_form.title }}</a>
+                        <a class="text-decoration-none" href="{{ testing_form.url }}"
+                           target="_blank">{{ testing_form.title }}</a>
                     </div>
                 {% endif %}
             {% endfor %}

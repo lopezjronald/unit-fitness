@@ -6,6 +6,11 @@
     <div class="container mt-5">
         <div class="container">
             <div class="display-4">Google Forms</div>
+            {% if user.is_authenticated %}
+                <div class="fs-5 my-3">
+                    <a href="{% url 'document_new' %}" class="text-decoration-none">+ Create Appointment Letter</a>
+                </div>
+            {% endif %}
             <hr>
             {% for google_form in google_form_list %}
                 {% if google_form.type == "Google Form" %}
