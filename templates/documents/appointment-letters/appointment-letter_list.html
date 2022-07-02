@@ -15,14 +15,13 @@
             {% for appointment_letter in appointment_letter_list %}
                 {% if appointment_letter.type == "Appointment Letter" %}
                     <div class="display-3 fs-2 mb-2">
-                        <a class="text-decoration-none" href="{{ appointment_letter.url }}"
-                           target="_blank">{{ appointment_letter.title }}</a>
+                        <a class="text-decoration-none" href="{% url 'document_detail' appointment_letter.pk %}">{{ appointment_letter.title }}</a>
                     </div>
                     {% if user.is_authenticated %}
                         <div class="row mb-4">
                             <div class="col-1">
                                 <div class="fs-2">
-                                    <form action="{% url 'appointment_letter_detail' appointment_letter.pk %}" method="get">
+                                    <form action="{% url 'document_detail' appointment_letter.pk %}" method="get">
                                         <input type="submit" value="View" class="btn btn-secondary"></input>
                                     </form>
                                 </div>

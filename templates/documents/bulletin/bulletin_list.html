@@ -11,8 +11,8 @@
             </div>
         {% endif %}
         {% for bulletin in bulletin_list %}
-            <div class="fs-2"><a class="text-dark text-decoration-none" href="{{ bulletin.url }}"
-                                 target="_blank">{{ bulletin }}</a>
+            <div class="fs-2"><a class="text-dark text-decoration-none" href="{% url 'bulletin_detail' bulletin.pk %}"
+                                 >{{ bulletin }}</a>
             </div>
 
             <div class="fs-2">

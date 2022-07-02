@@ -5,10 +5,24 @@
 {% block content %}
     <div class="container mx-5">
         <h1 class="display-2 mt-5">{{ bulletin }} UTA</h1>
-        <div class="fs-2 my-3">
-            <form action="{% url 'bulletin_edit' bulletin.pk %}" method="get">
-                <input type="submit" value="Edit" class="btn btn-lg btn-dark text-light"></input>
-            </form>
+        <div class="row">
+            <div class="col-1">
+                <div class="fs-2 my-3">
+                    <form action="{% url 'bulletin_edit' bulletin.pk %}" method="get">
+                        <input type="submit" value="Edit" class="btn btn-primary"></input>
+                    </form>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="fs-2 my-3">
+                    <form action="{% url 'bulletin_delete' bulletin.pk %}" method="get">
+                        <input type="submit" value="Delete" class="btn btn-danger"></input>
+                    </form>
+                </div>
+            </div>
         </div>
+        <iframe class="embed-responsive-item"
+                style="height:100vh; width: 100%;"
+                src="{% autoescape off %}{{ bulletin.embedded_url }}{% endautoescape %}"></iframe>
     </div>
 {% endblock %}

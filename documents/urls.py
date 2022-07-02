@@ -11,7 +11,6 @@ urlpatterns = [
     path("bulletin/", views.BulletinListView.as_view(), name="bulletin_list"),
 
     # Appointment Letter urls
-    path("appointment-letters/<int:pk>/", views.AppointmentLetterDetailView.as_view(), name="appointment_letter_detail"),
     path("appointment-letters/", views.AppointmentLetterListView.as_view(), name="appointment_letter_list"),
 
     # Google Form urls

@@ -23,7 +23,7 @@ class BulletinDetailView(DetailView):
 class BulletinCreateView(LoginRequiredMixin, CreateView):
     model = Bulletin
     template_name = "documents/bulletin/bulletin_new.html"
-    fields = ["start_date", "end_date", "url"]
+    fields = ["start_date", "end_date", "url", "embedded_url"]
 
 
 class BulletinUpdateView(LoginRequiredMixin, UpdateView):
@@ -32,6 +32,7 @@ class BulletinUpdateView(LoginRequiredMixin, UpdateView):
         "start_date",
         "end_date",
         "url",
+        "embedded_url",
     )
     template_name = "documents/bulletin/bulletin_edit.html"
 
@@ -49,24 +50,12 @@ class AppointmentLetterListView(ListView):
     context_object_name = "appointment_letter_list"
 
 
-class AppointmentLetterDetailView(LoginRequiredMixin, DetailView):
-    model = Document
-    template_name = "documents/appointment-letters/appointment-letter_detail.html"
-    context_object_name = "appointment_letter"
-
-
 # Google Form Views
 class GoogleFormListView(ListView):
     model = Document
     template_name = "documents/forms/google-form_list.html"
     context_object_name = "google_form_list"
     paginate_by = 5
-
-
-class GoogleFormDetailView(LoginRequiredMixin, DetailView):
-    model = Document
-    template_name = "documents/forms/google-form_detail.html"
-    context_object_name = "google_form"
 
 
 # Testing Form Views
@@ -76,24 +65,12 @@ class TestingFormListView(ListView):
     context_object_name = "testing_form_list"
 
 
-class TestingFormDetailView(LoginRequiredMixin, DetailView):
-    model = Document
-    template_name = "documents/forms/google-form_detail.html"
-    context_object_name = "testing_form"
-
-
 # Information Views
 class InformationListView(ListView):
     model = Document
     template_name = "documents/information/information_list.html"
     context_object_name = "information_list"
     paginate_by = 5
-
-
-class InformationDetailView(LoginRequiredMixin, DetailView):
-    model = Document
-    template_name = "documents/information/information_detail.html"
-    context_object_name = "information"
 
 
 # Document Views

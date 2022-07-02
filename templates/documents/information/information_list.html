@@ -15,9 +15,34 @@
             {% for information in information_list %}
                 {% if information.type == "Information" %}
                     <div class="display-4 fs-3 mb-3">
-                        <a class="text-decoration-none" href="{{ information.url }}"
-                           target="_blank">{{ information.title }}</a>
+                        <a class="text-decoration-none" href="{% url 'document_detail' information.pk %}"
+                           >{{ information.title }}</a>
                     </div>
+                    {% if user.is_authenticated %}
+                        <div class="row mb-4">
+                            <div class="col-1">
+                                <div class="fs-2">
+                                    <form action="{% url 'document_detail' information.pk %}" method="get">
+                                        <input type="submit" value="View" class="btn btn-secondary"></input>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <div class="fs-2">
+                                    <form action="{% url 'document_edit' information.pk %}" method="get">
+                                        <input type="submit" value="Edit" class="btn btn-primary"></input>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <div class="fs-2">
+                                    <form action="{% url 'document_delete' information.pk %}" method="get">
+                                        <input type="submit" value="Delete" class="btn btn-danger"></input>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
         </div>

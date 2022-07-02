@@ -14,8 +14,7 @@
             <hr>
             {% for document in all_documents %}
                 <div class="display-4 fs-3 mb-3">
-                    <a class="text-decoration-none" href="{{ document.url }}"
-                       target="_blank">{{ document.title }}</a>
+                    <a class="text-decoration-none" href="{% url 'document_detail' document.pk %}">{{ document.title }}</a>
                 </div>
                 {% if user.is_authenticated %}
                     <div class="fs-2">

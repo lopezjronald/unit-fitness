@@ -13,7 +13,7 @@ class Document(models.Model):
     description = models.TextField(blank=True, null=True)
     type = models.CharField(max_length=50, choices=DOCUMENT_TYPES, blank=True, null=True)
     url = models.URLField(blank=True, null=True)
-    embedded_url = models.URLField(blank=True, null=True)
+    embedded_url = models.CharField(max_length=1000, blank=True, null=True)
     document_created = models.DateTimeField(auto_now_add=True)
     document_updated = models.DateTimeField(auto_now=True)
 
@@ -28,6 +28,7 @@ class Bulletin(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     url = models.URLField()
+    embedded_url = models.URLField(null=True, blank=True)
 
     class Meta:
         ordering = ("-start_date",)

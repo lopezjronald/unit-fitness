@@ -21,5 +21,8 @@
                 </div>
             </div>
         </div>
+        <iframe class="embed-responsive-item"
+                style="height:100vh; width: 100%;"
+                src="{% autoescape off %}{{ document.embedded_url }}{% endautoescape %}"></iframe>
     </div>
 {% endblock %}
