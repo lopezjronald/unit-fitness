@@ -3,29 +3,33 @@
 {% block title %}{{ document }}{% endblock %}
 
 {% block content %}
-    <div class="container mx-5">
-        <h1 class="display-2 mt-5">{{ document }}</h1>
-        {% if user.is_authenticated %}
-            <div class="row">
-                <div class="col-1">
-                    <div class="fs-2 my-3">
-                        <form action="{% url 'document_edit' document.pk %}" method="get">
-                            <input type="submit" value="Edit" class="btn btn-primary"></input>
-                        </form>
+    <div class="container">
+        <div class="container">
+            <h1 class="display-2 mt-5">{{ document }}</h1>
+            {% if user.is_authenticated %}
+                <div class="row">
+                    <div class="col-1">
+                        <div class="fs-2 my-3">
+                            <form action="{% url 'document_edit' document.pk %}" method="get">
+                                <input type="submit" value="Edit" class="btn btn-primary"></input>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="fs-2 my-3">
+                            <form action="{% url 'document_delete' document.pk %}" method="get">
+                                <input type="submit" value="Delete" class="btn btn-danger"></input>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <div class="col-1">
-                    <div class="fs-2 my-3">
-                        <form action="{% url 'document_delete' document.pk %}" method="get">
-                            <input type="submit" value="Delete" class="btn btn-danger"></input>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
+            {% endif %}
 
-        <iframe class="embed-responsive-item"
-                style="height:100vh; width: 100%;"
-                src="{% autoescape off %}{{ document.embedded_url }}{% endautoescape %}"></iframe>
+            <div class="embed-responsive">
+                <iframe class="embed-responsive-item"
+                        style="height:100vh; width: 100%;"
+                        src="{% autoescape off %}{{ document.embedded_url }}{% endautoescape %}"></iframe>
+            </div>
+        </div>
     </div>
 {% endblock %}
