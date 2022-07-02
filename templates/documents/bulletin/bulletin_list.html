@@ -18,13 +18,13 @@
             <div class="fs-2">
                 <div class="row">
                     <div class="col-1">
-                        <form method="GET" action="{{ bulletin.url }}">
+                        <form action="{% url 'bulletin_detail' bulletin.pk %}">
                             <input class="btn btn-secondary" type="submit" value="View">
                         </form>
                     </div>
                     {% if user.is_authenticated %}
                         <div class="col-1">
-                            <form method="GET" action="{% url 'bulletin_edit' bulletin.pk %}">
+                            <form  action="{% url 'bulletin_edit' bulletin.pk %}">
                                 <input class="btn btn-success" type="submit" value="Edit">
                             </form>
                         </div>
