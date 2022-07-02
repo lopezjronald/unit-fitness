@@ -18,31 +18,28 @@
                         <a href="{% url 'document_detail' google_form.pk %}"
                            class="text-decoration-none">{{ google_form.title }}</a>
                     </div>
-                    {% if user.is_authenticated %}
-                        <div class="row mb-4">
+                    <div class="fs-2">
+                        <div class="row">
                             <div class="col-1">
-                                <div class="fs-2">
-                                    <form action="{% url 'document_detail' google_form.pk %}" method="get">
-                                        <input type="submit" value="View" class="btn btn-secondary"></input>
+                                <form action="{% url 'document_detail' google_form.pk %}">
+                                    <input class="btn btn-secondary" type="submit" value="View">
+                                </form>
+                            </div>
+                            {% if user.is_authenticated %}
+                                <div class="col-1">
+                                    <form action="{% url 'document_edit' google_form.pk %}">
+                                        <input class="btn btn-success" type="submit" value="Edit">
                                     </form>
                                 </div>
-                            </div>
-                            <div class="col-1">
-                                <div class="fs-2">
-                                    <form action="{% url 'document_edit' google_form.pk %}" method="get">
-                                        <input type="submit" value="Edit" class="btn btn-primary"></input>
+                                <div class="col-1">
+                                    <form action="{% url 'document_delete' google_form.pk %}">
+                                        <input class="btn btn-danger" type="submit" value="Delete">
                                     </form>
                                 </div>
-                            </div>
-                            <div class="col-1">
-                                <div class="fs-2">
-                                    <form action="{% url 'document_delete' google_form.pk %}" method="get">
-                                        <input type="submit" value="Delete" class="btn btn-danger"></input>
-                                    </form>
-                                </div>
-                            </div>
+                            {% endif %}
                         </div>
-                    {% endif %}
+                        <br class="py-3">
+                    </div>
                 {% endif %}
             {% endfor %}
         </div>
