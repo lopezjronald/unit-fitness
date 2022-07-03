@@ -1,6 +1,6 @@
 html, body {
     width: 100%;
-    height: 150%;
+    height: 100%;
     padding: 0;
 }
 
@@ -17,6 +17,11 @@ html, body {
     padding: 0;
 }
 
+#page-container {
+    position: relative;
+    min-height: 60vh;
+}
+
 #homepage-header {
 }
 
@@ -25,7 +30,7 @@ a:hover, a:visited, a:focus {
 }
 
 .footer {
-    position: fixed;
+    position: absolute;
     padding-top: 50px !important;
     bottom: 0;
     width: 100%;

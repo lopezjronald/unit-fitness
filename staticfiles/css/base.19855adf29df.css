@@ -1,7 +1,22 @@
-html, body {
-    width: 100%;
+html {
     height: 100%;
-    padding: 0;
+    width: 100%;
+}
+
+body {
+    height:100%;
+    width:100%;
+    display:table;
+    table-layout:fixed;
+    margin:0 auto;
+    }
+
+.row {
+    display:table-row;
+}
+
+div.row {
+    height: 100%;
 }
 
 #homepage-image {
@@ -17,11 +32,6 @@ html, body {
     padding: 0;
 }
 
-#page-container {
-    position: relative;
-    min-height: 60vh;
-}
-
 #homepage-header {
 }
 
@@ -30,7 +40,7 @@ a:hover, a:visited, a:focus {
 }
 
 .footer {
-    position: absolute;
+    position: fixed;
     padding-top: 50px !important;
     bottom: 0;
     width: 100%;
