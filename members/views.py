@@ -29,6 +29,7 @@ class PhysicalTrainingLeaderCreateView(LoginRequiredMixin, CreateView):
               "phone_number",
               "email",
               "cpr_card",
+              "cpr_expiration_date",
               "ptl_completion_date",
               "appointment_letter"]
 
@@ -44,6 +45,7 @@ class PhysicalTrainingLeaderUpdateView(LoginRequiredMixin, UpdateView):
         "phone_number",
         "email",
         "cpr_card",
+        "cpr_expiration_date",
         "ptl_completion_date",
         "appointment_letter",
     )
