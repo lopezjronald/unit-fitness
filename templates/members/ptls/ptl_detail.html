@@ -25,8 +25,14 @@
         </div>
         <div class="embed-responsive">
             <iframe class="embed-responsive-item"
-                    style="height:100vh; width: 100%;"
+                    style="height:50vh; width: 100%;"
                     src="{% autoescape off %}{{ ptl.cpr_card }}{% endautoescape %}"></iframe>
         </div>
+        <div class="embed-responsive">
+            <iframe class="embed-responsive-item"
+                    style="height:50vh; width: 100%;"
+                    src="{% autoescape off %}{{ ptl.appointment_letter }}{% endautoescape %}"></iframe>
+        </div>
+
     </div>
 {% endblock %}
