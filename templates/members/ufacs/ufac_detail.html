@@ -21,5 +21,35 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="display-4 fs-2 mb-3">
+                MyFitness User Agreement Letter
+            </div>
+        </div>
+        <div class="embed-responsive mb-3">
+            <iframe class="embed-responsive-item"
+                    style="height:50vh; width: 100%;"
+                    src="{% autoescape off %}{{ ufac.user_agreement }}{% endautoescape %}"></iframe>
+        </div>
+        <div class="container">
+            <div class="display-4 fs-2 mb-3">
+                MyFitness Written Order
+            </div>
+        </div>
+        <div class="embed-responsive mb-3">
+            <iframe class="embed-responsive-item"
+                    style="height:50vh; width: 100%;"
+                    src="{% autoescape off %}{{ ufac.written_order }}{% endautoescape %}"></iframe>
+        </div>
+        <div class="container">
+            <div class="display-4 fs-2 mb-3">
+                DD Form 2875 - System Authorization Request Letter
+            </div>
+        </div>
+        <div class="embed-responsive mb-3">
+            <iframe class="embed-responsive-item"
+                    style="height:50vh; width: 100%;"
+                    src="{% autoescape off %}{{ ufac.system_authorization_request }}{% endautoescape %}"></iframe>
+        </div>
     </div>
 {% endblock %}
