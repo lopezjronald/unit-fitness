@@ -50,10 +50,12 @@ class PhysicalTrainingLeader(Member):
                                            null=True,
                                            verbose_name="PTL Completion Date", )
     appointment_letter = models.URLField(verbose_name="Appointment Letter URL")
+    cpr_expiration_date = models.DateField(blank=True, null=True, verbose_name="CPR Expiration Date")
 
     class Meta:
         verbose_name = "PTL"
         verbose_name_plural = "Physical Training Leader Team"
+        ordering = ["-cpr_expiration_date", "last_name"]
 
     def __str__(self):
         return f"{self.rank} {self.last_name}, {self.first_name}"
