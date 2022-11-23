@@ -12,7 +12,7 @@
                 </div>
             {% endif %}
             <hr>
-            {% for testing_form in testing_form_list %}
+            {% for testing_form in document_list %}
                 {% if testing_form.type == "Testing Form" %}
                     <div class="display-4 fs-3 mb-3">
                         <a class="text-decoration-none" href="{% url 'document_detail' testing_form.pk %}"

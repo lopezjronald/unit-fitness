@@ -12,7 +12,7 @@
                 </div>
             {% endif %}
             <hr>
-            {% for information in information_list %}
+            {% for information in document_list %}
                 {% if information.type == "Information" %}
                     <div class="display-4 fs-3 mb-3">
                         <a class="text-decoration-none" href="{% url 'document_detail' information.pk %}"

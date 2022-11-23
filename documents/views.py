@@ -90,6 +90,7 @@ class DocumentCreatView(LoginRequiredMixin, CreateView):
     model = Document
     template_name = "documents/document_new.html"
     fields = ["title", "description", "type", "url", "embedded_url"]
+    success_url = reverse_lazy("all_documents")
 
 
 class DocumentUpdateView(LoginRequiredMixin, UpdateView):

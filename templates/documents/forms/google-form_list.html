@@ -12,7 +12,7 @@
                 </div>
             {% endif %}
             <hr>
-            {% for google_form in google_form_list %}
+            {% for google_form in document_list %}
                 {% if google_form.type == "Google Form" %}
                     <div class="display-4 fs-4 pb-3">
                         <a href="{% url 'document_detail' google_form.pk %}"

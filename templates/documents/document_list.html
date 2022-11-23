@@ -12,7 +12,7 @@
                 </div>
             {% endif %}
             <hr>
-            {% for document in all_documents %}
+            {% for document in document_list %}
                 <div class="display-4 fs-3 mb-3">
                     <a class="text-decoration-none"
                        href="{% url 'document_detail' document.pk %}">{{ document.title }}</a>
