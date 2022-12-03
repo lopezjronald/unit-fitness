@@ -6,13 +6,20 @@
 
     <div class="container">
         <h1 class="display-3 my-5">Search Document Results</h1>
-        {% for document in document_list %}
-            <div>
-                <div class="display-4 fs-3 mb-3"><a class="text-decoration-none" href="{{ document.get_absolute_url }}">{{ document.title }}</a></div>
-            </div>
-        {% endfor %}
+
+        {% if document_list.count == 0 %}
+            <div class="fs-4 mb-3"><em>Sorry. None found.</em></div>
+        {% else %}
+            {% for document in document_list %}
+                <div>
+                    <div class="display-4 fs-3 mb-3"><a class="text-decoration-none"
+                                                        href="{{ document.get_absolute_url }}">{{ document.title }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <h4 class="mt-4"><a href="{% url 'all_documents' %}" class="text-decoration-none">Back to Documents</a></h4>
     </div>
 
-    div
 
 {% endblock content %}
