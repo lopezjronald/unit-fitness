@@ -5,6 +5,8 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Bulletin, Document
 
+from django.db.models import Q  # for query search
+
 
 # Bulletin Views
 class BulletinListView(ListView):
@@ -109,3 +111,13 @@ class DocumentDeleteView(LoginRequiredMixin, DeleteView):
     model = Document
     template_name = "documents/document_delete.html"
     success_url = reverse_lazy("home")
+
+
+class SearchResultsListView(ListView):
+    template_name = "documents/search_results.html"
+
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        return Document.objects.filter(
+            Q(title__icontains=query) | Q(description__icontains=query) | Q(type__icontains=query)
+        ).order_by("title")

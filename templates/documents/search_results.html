@@ -1,0 +1,18 @@
+{% extends "_base.html" %}
+
+{% block title %}Search Documents{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+        <h1 class="display-3 my-5">Search Document Results</h1>
+        {% for document in document_list %}
+            <div>
+                <div class="display-4 fs-3 mb-3"><a class="text-decoration-none" href="{{ document.get_absolute_url }}">{{ document.title }}</a></div>
+            </div>
+        {% endfor %}
+    </div>
+
+    div
+
+{% endblock content %}

@@ -29,4 +29,7 @@ urlpatterns = [
     path("new/", views.DocumentCreatView.as_view(), name="document_new"),
     path("", views.DocumentListView.as_view(), name="all_documents"),
 
+    # Search URL
+    path("search/", views.SearchResultsListView.as_view(), name="search_results"),
+
 ]

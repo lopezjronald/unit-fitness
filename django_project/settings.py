@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "fontawesomefree",
     "crispy_forms",
     "crispy_bootstrap5",
+    "django.contrib.postgres",
     # local
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
