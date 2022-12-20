@@ -15,6 +15,9 @@ class Video(models.Model):
     type = models.CharField(max_length=50, blank=True, null=True, choices=VIDEO_TYPES)
     embedded_url = models.CharField(max_length=500)
 
+    class Meta:
+        ordering = ["title"]
+
     def __str__(self):
         return self.title
 
