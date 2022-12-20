@@ -2,7 +2,8 @@ from .views import (VideoListView,
                     VideoDetailView,
                     VideoCreateView,
                     VideoUpdateView,
-                    VideoDeleteView)
+                    VideoDeleteView,
+                    SearchResultsListView)
 from django.urls import path
 
 urlpatterns = [
@@ -11,5 +12,8 @@ urlpatterns = [
     path("new/", VideoCreateView.as_view(), name="video_new"),
     path("<int:pk>/", VideoDetailView.as_view(), name="video_detail"),
     path("", VideoListView.as_view(), name="video_list"),
+
+    # Search URL
+    path("search/", SearchResultsListView.as_view(), name="search_results"),
 
 ]

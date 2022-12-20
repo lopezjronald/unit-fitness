@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+
+{% block title %}Search Videos{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+        <h1 class="display-3 my-5">Search Video Results</h1>
+
+        {% if search_results.count == 0 %}
+            <div class="fs-4 mb-3"><em>Sorry. None found.</em></div>
+        {% else %}
+            {% for video in video_list %}
+                <div>
+                    <div class="display-4 fs-3 mb-3"><a class="text-decoration-none"
+                                                        href="{{ video.get_absolute_url }}">{{ video.title }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <h4 class="mt-4"><a href="{% url 'video_list' %}" class="text-decoration-none">Back to Videos</a></h4>
+    </div>
+
+
+{% endblock content %}

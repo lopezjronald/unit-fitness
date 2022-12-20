@@ -22,4 +22,4 @@ class Video(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("video_list")
+        return reverse("video_detail", kwargs={"pk": self.pk})

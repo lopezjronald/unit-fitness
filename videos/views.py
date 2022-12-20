@@ -5,6 +5,8 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Video
 
+from django.db.models import Q  # for query search
+
 
 class VideoListView(ListView):
     model = Video
@@ -45,3 +47,13 @@ class VideoDeleteView(LoginRequiredMixin, DeleteView):
     model = Video
     template_name = "videos/video_delete.html"
     success_url = reverse_lazy("video_list")
+
+
+class SearchResultsListView(ListView):
+    template_name = "videos/search_results.html"
+
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        return Video.objects.filter(
+            Q(title__icontains=query) | Q(description__icontains=query) | Q(type__icontains=query)
+        ).order_by("title")

@@ -10,6 +10,13 @@
                 <a href="{% url 'video_new' %}" class="text-decoration-none">+ Create Video</a>
             </div>
         {% endif %}
+
+        <form class="d-flex" action="{% url 'search_results' %}" method="get">
+            <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-\
+                   label="Search">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+
         <hr>
         {% for video in video_list %}
             <div class="display-4 fs-2 mb-3"><a href="{% url 'video_detail' video.pk %}"
