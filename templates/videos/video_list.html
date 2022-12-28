@@ -19,30 +19,60 @@
 
         <hr>
         {% for video in video_list %}
-            <div class="display-4 fs-2 mb-3"><a href="{% url 'videos:video_detail' video.pk %}"
-                                                class="text-decoration-none">{{ video.title }}</a></div>
-            <div class="fs-2">
-                <div class="row">
-                    <div class="col-1">
-                        <form action="{% url 'videos:video_detail' video.pk %}">
-                            <input class="btn btn-dark btn-lg" type="submit" value="View">
-                        </form>
+
+            {% if video.type == "Training" %}
+                {% if user.is_authenticated %}
+                    <div class="display-4 fs-2 mb-3"><a href="{% url 'videos:video_detail' video.pk %}"
+                                                        class="text-decoration-none">{{ video.title }}</a></div>
+                    <div class="fs-2">
+                        <div class="row">
+                            <div class="col-1">
+                                <form action="{% url 'videos:video_detail' video.pk %}">
+                                    <input class="btn btn-dark btn-lg" type="submit" value="View">
+                                </form>
+                            </div>
+                            {% if user.is_authenticated %}
+                                <div class="col-1">
+                                    <form action="{% url 'videos:video_edit' video.pk %}">
+                                        <input class="btn btn-success btn-lg" type="submit" value="Edit">
+                                    </form>
+                                </div>
+                                <div class="col-1">
+                                    <form action="{% url 'videos:video_delete' video.pk %}">
+                                        <input class="btn btn-danger btn-lg" type="submit" value="Delete">
+                                    </form>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <br class="py-3">
                     </div>
-                    {% if user.is_authenticated %}
+                {% endif %}
+            {% else %}
+                <div class="display-4 fs-2 mb-3"><a href="{% url 'videos:video_detail' video.pk %}"
+                                                    class="text-decoration-none">{{ video.title }}</a></div>
+                <div class="fs-2">
+                    <div class="row">
                         <div class="col-1">
-                            <form action="{% url 'videos:video_edit' video.pk %}">
-                                <input class="btn btn-success btn-lg" type="submit" value="Edit">
+                            <form action="{% url 'videos:video_detail' video.pk %}">
+                                <input class="btn btn-dark btn-lg" type="submit" value="View">
                             </form>
                         </div>
-                        <div class="col-1">
-                            <form action="{% url 'videos:video_delete' video.pk %}">
-                                <input class="btn btn-danger btn-lg" type="submit" value="Delete">
-                            </form>
-                        </div>
-                    {% endif %}
+                        {% if user.is_authenticated %}
+                            <div class="col-1">
+                                <form action="{% url 'videos:video_edit' video.pk %}">
+                                    <input class="btn btn-success btn-lg" type="submit" value="Edit">
+                                </form>
+                            </div>
+                            <div class="col-1">
+                                <form action="{% url 'videos:video_delete' video.pk %}">
+                                    <input class="btn btn-danger btn-lg" type="submit" value="Delete">
+                                </form>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <br class="py-3">
                 </div>
-                <br class="py-3">
-            </div>
+            {% endif %}
         {% endfor %}
     </div>
 
