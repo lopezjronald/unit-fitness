@@ -46,10 +46,12 @@ class VideoUpdateView(LoginRequiredMixin, UpdateView):
 class VideoDeleteView(LoginRequiredMixin, DeleteView):
     model = Video
     template_name = "videos/video_delete.html"
-    success_url = reverse_lazy("video_list")
+    success_url = reverse_lazy("videos:video_list")
 
 
 class SearchResultsListView(ListView):
+    model = Video
+    context_object_name = "video_list"
     template_name = "videos/search_results.html"
 
     def get_queryset(self):

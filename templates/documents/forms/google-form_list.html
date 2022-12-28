@@ -8,31 +8,31 @@
             <div class="display-4">Google Forms</div>
             {% if user.is_authenticated %}
                 <div class="fs-5 my-3">
-                    <a href="{% url 'document_new' %}" class="text-decoration-none">+ Create Document</a>
+                    <a href="{% url 'documents:document_new' %}" class="text-decoration-none">+ Create Document</a>
                 </div>
             {% endif %}
             <hr>
             {% for google_form in document_list %}
                 {% if google_form.type == "Google Form" %}
                     <div class="display-4 fs-4 pb-3">
-                        <a href="{% url 'document_detail' google_form.pk %}"
+                        <a href="{% url 'documents:document_detail' google_form.pk %}"
                            class="text-decoration-none">{{ google_form.title }}</a>
                     </div>
                     <div class="fs-2">
                         <div class="row">
                             <div class="col-1">
-                                <form action="{% url 'document_detail' google_form.pk %}">
+                                <form action="{% url 'documents:document_detail' google_form.pk %}">
                                     <input class="btn btn-dark" type="submit" value="View">
                                 </form>
                             </div>
                             {% if user.is_authenticated %}
                                 <div class="col-1">
-                                    <form action="{% url 'document_edit' google_form.pk %}">
+                                    <form action="{% url 'documents:document_edit' google_form.pk %}">
                                         <input class="btn btn-success" type="submit" value="Edit">
                                     </form>
                                 </div>
                                 <div class="col-1">
-                                    <form action="{% url 'document_delete' google_form.pk %}">
+                                    <form action="{% url 'documents:document_delete' google_form.pk %}">
                                         <input class="btn btn-danger" type="submit" value="Delete">
                                     </form>
                                 </div>

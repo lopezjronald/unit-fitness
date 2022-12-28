@@ -8,37 +8,37 @@
             <h1 class="display-4">Documents</h1>
             {% if user.is_authenticated %}
                 <div class="fs-5 my-3">
-                    <a href="{% url 'document_new' %}" class="text-decoration-none">+ Create Document</a>
+                    <a href="{% url 'documents:document_new' %}" class="text-decoration-none">+ Create Document</a>
                 </div>
             {% endif %}
 
-            <form class="d-flex" action="{% url 'search_results' %}" method="get">
+            <form class="d-flex" action="{% url 'documents:search_results' %}" method="get">
                 <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-\
                        label="Search">
                 <button class="btn btn-outline-primary" type="submit">Search</button>
             </form>
 
             <hr>
-            {% for document in document_list %}
+            {% for document in all_documents %}
                 <div class="display-4 fs-3 mb-3">
                     <a class="text-decoration-none"
-                       href="{% url 'document_detail' document.pk %}">{{ document.title }}</a>
+                       href="{% url 'documents:document_detail' document.pk %}">{{ document.title }}</a>
                 </div>
                 <div class="fs-2">
                     <div class="row">
                         <div class="col-1">
-                            <form action="{% url 'document_detail' document.pk %}">
+                            <form action="{% url 'documents:document_detail' document.pk %}">
                                 <input class="btn btn-dark btn-lg" type="submit" value="View">
                             </form>
                         </div>
                         {% if user.is_authenticated %}
                             <div class="col-1">
-                                <form action="{% url 'document_edit' document.pk %}">
+                                <form action="{% url 'documents:document_edit' document.pk %}">
                                     <input class="btn btn-success btn-lg" type="submit" value="Edit">
                                 </form>
                             </div>
                             <div class="col-1">
-                                <form action="{% url 'document_delete' document.pk %}">
+                                <form action="{% url 'documents:document_delete' document.pk %}">
                                     <input class="btn btn-danger btn-lg" type="submit" value="Delete">
                                 </form>
                             </div>
@@ -49,4 +49,25 @@
             {% endfor %}
         </div>
     </div>
+
+    {% if all_documents %}
+        {% if is_paginated %}
+            <div class="container text-center">
+                <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                {% endif %}
+            </span>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
 {% endblock %}

@@ -47,7 +47,7 @@
                     </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'video_list' %}">Videos</a>
+                    <a class="nav-link" href="{% url 'videos:video_list' %}">Videos</a>
                 </li>
                 {% if document_list.count != 0 %}
                     <li class="nav-item dropdown">
@@ -58,28 +58,28 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li>
                                 <a class="dropdown-item"
-                                   href="{% url 'all_documents' %}">All Documents</a>
+                                   href="{% url 'documents:all_documents' %}">All Documents</a>
                             </li>
                             {% for document in document_type_list %}
                                 {% if document.type == "Appointment Letter" %}
                                     <li>
                                         <a class="dropdown-item"
-                                           href="{% url 'appointment_letter_list' %}">{{ document.type }}</a>
+                                           href="{% url 'documents:appointment_letter_list' %}">{{ document.type }}</a>
                                     </li>
                                 {% elif document.type == "Google Form" %}
                                     <li>
                                         <a class="dropdown-item"
-                                           href="{% url 'google_form_list' %}">{{ document.type }}</a>
+                                           href="{% url 'documents:google_form_list' %}">{{ document.type }}</a>
                                     </li>
                                 {% elif document.type == "Information" %}
                                     <li>
                                         <a class="dropdown-item"
-                                           href="{% url 'information_list' %}">{{ document.type }}</a>
+                                           href="{% url 'documents:information_list' %}">{{ document.type }}</a>
                                     </li>
                                 {% elif document.type == "Testing Form" %}
                                     <li>
                                         <a class="dropdown-item"
-                                           href="{% url 'testing_form_list' %}">{{ document.type }}</a>
+                                           href="{% url 'documents:testing_form_list' %}">{{ document.type }}</a>
                                     </li>
                                 {% endif %}
                             {% endfor %}
@@ -143,7 +143,7 @@
             <div class="col">
                 <h1 class="fs-6 text-light">349th ASTS Fitness</h1>
                 <ul>
-                    <li><a href="{% url 'bulletin_list' %}" class="text-decoration-none link-light">Bulletin</a>
+                    <li><a href="{% url 'documents:bulletin_list' %}" class="text-decoration-none link-light">Bulletin</a>
                     </li>
                     <li><a href="https://forms.gle/ucghcFDPREeZknLa9" class="text-decoration-none link-light"
                            target="_blank">Get in Touch</a></li>

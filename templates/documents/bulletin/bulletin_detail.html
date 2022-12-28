@@ -9,14 +9,14 @@
             <div class="row">
                 <div class="col-1">
                     <div class="fs-2 my-3">
-                        <form action="{% url 'bulletin_edit' bulletin.pk %}" method="get">
+                        <form action="{% url 'documents:bulletin_edit' bulletin.pk %}" method="get">
                             <input type="submit" value="Edit" class="btn btn-primary"></input>
                         </form>
                     </div>
                 </div>
                 <div class="col-1">
                     <div class="fs-2 my-3">
-                        <form action="{% url 'bulletin_delete' bulletin.pk %}" method="get">
+                        <form action="{% url 'documents:bulletin_delete' bulletin.pk %}" method="get">
                             <input type="submit" value="Delete" class="btn btn-danger"></input>
                         </form>
                     </div>

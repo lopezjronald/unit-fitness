@@ -21,7 +21,7 @@ class Document(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("document_detail", kwargs={"pk": self.pk})
+        return reverse("documents:document_detail", kwargs={"pk": self.pk})
 
 
 class Bulletin(models.Model):
@@ -38,4 +38,4 @@ class Bulletin(models.Model):
         return f"{self.start_date.strftime('%B')} {self.start_date.strftime('%Y')}"
 
     def get_absolute_url(self):
-        return reverse("bulletin_list")
+        return reverse("documents:bulletin_list")

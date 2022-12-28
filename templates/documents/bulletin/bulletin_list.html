@@ -7,29 +7,29 @@
         <h1 class="display-4 mt-5 mb-3">UTA: Bulletin Page</h1>
         {% if user.is_authenticated %}
             <div class="fs-5 mb-2">
-                <a href="{% url 'bulletin_new' %}" class="text-decoration-none">+ Create Bulletin</a>
+                <a href="{% url 'documents:bulletin_new' %}" class="text-decoration-none">+ Create Bulletin</a>
             </div>
         {% endif %}
         {% for bulletin in bulletin_list %}
-            <div class="fs-2"><a class="text-dark text-decoration-none" href="{% url 'bulletin_detail' bulletin.pk %}"
+            <div class="fs-2"><a class="text-dark text-decoration-none" href="{% url 'documents:bulletin_detail' bulletin.pk %}"
                                  >{{ bulletin }}</a>
             </div>
 
             <div class="fs-2">
                 <div class="row">
                     <div class="col-1">
-                        <form action="{% url 'bulletin_detail' bulletin.pk %}">
+                        <form action="{% url 'documents:bulletin_detail' bulletin.pk %}">
                             <input class="btn btn-dark btn-lg" type="submit" value="View">
                         </form>
                     </div>
                     {% if user.is_authenticated %}
                         <div class="col-1">
-                            <form  action="{% url 'bulletin_edit' bulletin.pk %}">
+                            <form  action="{% url 'documents:bulletin_edit' bulletin.pk %}">
                                 <input class="btn btn-success" type="submit" value="Edit">
                             </form>
                         </div>
                         <div class="col-1">
-                            <form action="{% url 'bulletin_delete' bulletin.pk %}">
+                            <form action="{% url 'documents:bulletin_delete' bulletin.pk %}">
                                 <input class="btn btn-danger" type="submit" value="Delete">
                             </form>
                         </div>

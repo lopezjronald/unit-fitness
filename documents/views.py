@@ -42,7 +42,7 @@ class BulletinUpdateView(LoginRequiredMixin, UpdateView):
 class BulletinDeleteView(LoginRequiredMixin, DeleteView):
     model = Bulletin
     template_name = "documents/bulletin/bulletin_delete.html"
-    success_url = reverse_lazy("bulletin_list")
+    success_url = reverse_lazy("documents:bulletin_list")
 
 
 # Appointment Letter Views
@@ -80,6 +80,8 @@ class DocumentListView(ListView):
     model = Document
     template_name = "documents/document_list.html"
     context_object_name = "all_documents"
+    ordering = ("title",)
+    paginate_by = 5
 
 
 class DocumentDetailView(DetailView):
@@ -92,7 +94,7 @@ class DocumentCreatView(LoginRequiredMixin, CreateView):
     model = Document
     template_name = "documents/document_new.html"
     fields = ["title", "description", "type", "url", "embedded_url"]
-    success_url = reverse_lazy("all_documents")
+    success_url = reverse_lazy("documents:all_documents")
 
 
 class DocumentUpdateView(LoginRequiredMixin, UpdateView):
@@ -114,6 +116,8 @@ class DocumentDeleteView(LoginRequiredMixin, DeleteView):
 
 
 class SearchResultsListView(ListView):
+    model = Document
+    context_object_name = "document_list"
     template_name = "documents/search_results.html"
 
     def get_queryset(self):

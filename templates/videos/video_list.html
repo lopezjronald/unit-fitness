@@ -7,11 +7,11 @@
         <div class="display-4">Video List</div>
         {% if user.is_authenticated %}
             <div class="fs-5 my-2">
-                <a href="{% url 'video_new' %}" class="text-decoration-none">+ Create Video</a>
+                <a href="{% url 'videos:video_new' %}" class="text-decoration-none">+ Create Video</a>
             </div>
         {% endif %}
 
-        <form class="d-flex" action="{% url 'search_results' %}" method="get">
+        <form class="d-flex" action="{% url 'videos:search_results' %}" method="get">
             <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-\
                    label="Search">
             <button class="btn btn-outline-primary" type="submit">Search</button>
@@ -19,23 +19,23 @@
 
         <hr>
         {% for video in video_list %}
-            <div class="display-4 fs-2 mb-3"><a href="{% url 'video_detail' video.pk %}"
+            <div class="display-4 fs-2 mb-3"><a href="{% url 'videos:video_detail' video.pk %}"
                                                 class="text-decoration-none">{{ video.title }}</a></div>
             <div class="fs-2">
                 <div class="row">
                     <div class="col-1">
-                        <form action="{% url 'video_detail' video.pk %}">
+                        <form action="{% url 'videos:video_detail' video.pk %}">
                             <input class="btn btn-dark btn-lg" type="submit" value="View">
                         </form>
                     </div>
                     {% if user.is_authenticated %}
                         <div class="col-1">
-                            <form action="{% url 'video_edit' video.pk %}">
+                            <form action="{% url 'videos:video_edit' video.pk %}">
                                 <input class="btn btn-success btn-lg" type="submit" value="Edit">
                             </form>
                         </div>
                         <div class="col-1">
-                            <form action="{% url 'video_delete' video.pk %}">
+                            <form action="{% url 'videos:video_delete' video.pk %}">
                                 <input class="btn btn-danger btn-lg" type="submit" value="Delete">
                             </form>
                         </div>

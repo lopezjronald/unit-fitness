@@ -6,6 +6,8 @@ from .views import (VideoListView,
                     SearchResultsListView)
 from django.urls import path
 
+app_name = "videos"
+
 urlpatterns = [
     path("<int:pk>/delete/", VideoDeleteView.as_view(), name="video_delete"),
     path("<int:pk>/edit/", VideoUpdateView.as_view(), name="video_edit"),
