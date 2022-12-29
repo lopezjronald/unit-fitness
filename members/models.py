@@ -104,3 +104,39 @@ class UnitFitnessAssessmentCell(models.Model):
 
     def get_absolute_url(self):
         return reverse("ufac_list")
+
+
+class Commander(models.Model):
+    commander = models.ForeignKey(
+        Member,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f"{self.commander}"
+
+
+class UnsatisfactoryMember(models.Model):
+    member = models.ForeignKey(
+        Member,
+        on_delete=models.CASCADE,
+        verbose_name="Unsatisfactory Member",
+    )
+    failure_date = models.DateField()
+    retest_date = models.DateField()
+
+    def __str__(self):
+        return f"{self.member}"
+
+
+class NonCurrentMember(models.Model):
+    member = models.ForeignKey(
+        Member,
+        on_delete=models.CASCADE,
+        verbose_name="Non-Current Member",
+    )
+    test_date = models.DateField()
+    reason = models.TextField()
+
+    def __str__(self):
+        return f"{self.member}"

@@ -51,7 +51,7 @@
                 </li>
                 {% if document_list.count != 0 %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
                             Documents
                         </a>
@@ -87,7 +87,7 @@
                     </li>
                 {% elif user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'document_new' %}">Create Document</a>
+                        <a class="nav-link" href="{% url 'documents:document_new' %}">Create Document</a>
                     </li>
                 {% endif %}
                 <li class="nav-item dropdown">
