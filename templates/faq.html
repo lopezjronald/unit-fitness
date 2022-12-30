@@ -6,28 +6,21 @@
 {% block content %}
     <div class="container mt-5">
         <div class="display-1 mb-2 text-center">FAQ</div>
-        <div class="h2 mb-5 text-center">Fitness Questions</div>
+        <div class="fs-3 mb-5 text-center">How can we help you?</div>
         {% for faq in faq_list %}
-            <div id="accordion">
-                <div class="card my-3">
-                    <div class="card-header" id="heading{{ faq.pk }}">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ faq.pk }}"
-                                    aria-expanded="true"
-                                    aria-controls="collapse{{ faq.pk }}">
-                                {{ faq.question }}
-                            </button>
-                        </h5>
-                    </div>
-
-                    <div id="collapse{{ faq.pk }}" class="collapse show" aria-labelledby="heading{{ faq.pk }}"
-                         data-parent="#accordion">
-                        <div class="card-body">
-                            {{ faq.answer }}
-                        </div>
-                        <div class="card-body">
-                            DAFMAN Section: {{ faq.dafman_documentation }}
-                        </div>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-heading{{ faq.pk }}">
+                        <button class="accordion-button collapsed fs-5" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapse{{ faq.pk }}" aria-expanded="false"
+                                aria-controls="flush-collapse{{ faq.pk }}">
+                            {{ faq.question }}
+                        </button>
+                    </h2>
+                    <div id="flush-collapse{{ faq.pk }}" class="accordion-collapse collapse" aria-labelledby="flush-{{ faq.pk }}"
+                         data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">{{ faq.answer }}</div>
+                        <div class="accordion-body">DAFMAN 36-2905: {{ faq.dafman_documentation }}</div>
                     </div>
                 </div>
             </div>
