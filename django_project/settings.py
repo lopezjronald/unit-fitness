@@ -28,7 +28,7 @@ SECRET_KEY = env.str("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = ["www.astsfitness.com", ".herokuapp.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["www.astsfitness.com", "astsfitness.com", ".herokuapp.com", "localhost", "127.0.0.1"]
 
 # Application definition
 
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "documents.apps.DocumentsConfig",
     "videos.apps.VideosConfig",
     "reports.apps.ReportsConfig",
+    "memos.apps.MemosConfig",
 ]
 
 MIDDLEWARE = [

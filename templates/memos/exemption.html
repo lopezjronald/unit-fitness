@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Exemption Form{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="fs-1 text-center my-5">Exemption Form</div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="btn btn-primary">Submit</div>
+        </form>
+    </div>
+{% endblock %}
