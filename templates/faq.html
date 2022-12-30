@@ -6,7 +6,12 @@
 {% block content %}
     <div class="container mt-5">
         <div class="display-1 mb-2 text-center">FAQ</div>
-        <div class="fs-3 mb-5 text-center">How can we help you?</div>
+        <div class="fs-3 mb-1 text-center">How can we help you?</div>
+        <div class="text-center mb-3">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSedYTR4rXtMyCtrdPDm-nCwR8GRA9sjBaSRjJIMw1IvQhuUZA/viewform?embedded=true"
+                    align="center" width="800" height="750" frameborder="0" marginheight="0" marginwidth="0" scrolling="no">Loading…
+            </iframe>
+        </div>
         {% for faq in faq_list %}
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
@@ -17,7 +22,8 @@
                             {{ faq.question }}
                         </button>
                     </h2>
-                    <div id="flush-collapse{{ faq.pk }}" class="accordion-collapse collapse" aria-labelledby="flush-{{ faq.pk }}"
+                    <div id="flush-collapse{{ faq.pk }}" class="accordion-collapse collapse"
+                         aria-labelledby="flush-{{ faq.pk }}"
                          data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">{{ faq.answer }}</div>
                         <div class="accordion-body">DAFMAN 36-2905: {{ faq.dafman_documentation }}</div>
