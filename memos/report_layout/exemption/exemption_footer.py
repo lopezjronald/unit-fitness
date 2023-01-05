@@ -3,10 +3,10 @@ from reportlab.platypus import Table
 
 def generate_footer_table(width, height, ufpm, commander):
     height_list = [
-        height * .5,
+        height * .4,
         height * .1,
         height * .1,
-        height * .2,
+        height * .4,
         height * .1,
     ]
 
@@ -24,7 +24,7 @@ def generate_footer_table(width, height, ufpm, commander):
     footer_table.setStyle([
         # ("GRID", (0, 0), (-1, -1), 3, "red"),
         ("ALIGN", (0, 0), (-1, -1), "RIGHT"),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 30),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 100),
         ("RIGHTPADDING", (0, 0), (-1, -1), 40),
         ("TEXTCOLOR", (0, 0), (-1, -1), "BLACK"),
         ("FONTSIZE", (0, 0), (-1, -1), 12),
