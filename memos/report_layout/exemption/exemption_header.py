@@ -37,7 +37,7 @@ def generate_header_table(width, height):
     )
 
     header_table.setStyle([
-        ("GRID", (0, 0), (-1, -1), 1, "RED"),
+        # ("GRID", (0, 0), (-1, -1), 3, "red"),
         ("FONTSIZE", (1, 0), (1, 0), 14),
         ("FONTSIZE", (3, 0), (3, 0), 12),
         ("LEFTPADDING", (3, 0), (3, 0), -750),

@@ -35,8 +35,8 @@ letter_width, letter_height = letter
 width_list = letter_width
 height_list = [
     letter_height * .13,
-    letter_height * .52,
-    letter_height * .35,
+    letter_height * .6,
+    letter_height * .27,
 ]
 
 pdf = canvas.Canvas(file_name, pagesize=letter)
