@@ -1,5 +1,6 @@
 {% extends "_base.html" %}
 {% load static %}
+{% load markdown_extras %}
 
 {% block title %}FAQ{% endblock %}
 
@@ -16,17 +17,17 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-heading{{ faq.pk }}">
-                        <button class="accordion-button collapsed fs-5" type="button" data-bs-toggle="collapse"
+                        <button class="btn btn-primary accordion-button collapsed fs-5" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#flush-collapse{{ faq.pk }}" aria-expanded="false"
                                 aria-controls="flush-collapse{{ faq.pk }}">
-                            {{ faq.question }}
+                            {{ faq.question | markdown | safe }}
                         </button>
                     </h2>
                     <div id="flush-collapse{{ faq.pk }}" class="accordion-collapse collapse"
                          aria-labelledby="flush-{{ faq.pk }}"
                          data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">{{ faq.answer }}</div>
-                        <div class="accordion-body">DAFMAN 36-2905: {{ faq.dafman_documentation }}</div>
+                        <div class="accordion-body">{{ faq.answer | markdown | safe }}</div>
+                        <div class="accordion-body">DAFMAN 36-2905: {{ faq.dafman_documentation | markdown | safe }}</div>
                     </div>
                 </div>
             </div>
