@@ -6,7 +6,8 @@ from .models import (Member,
                      UnitFitnessAssessmentCell,
                      Commander,
                      NonCurrentMember,
-                     UnsatisfactoryMember)
+                     UnsatisfactoryMember,
+                     SpecialMember)
 
 admin.site.register(Member)
 admin.site.register(Commander)
@@ -15,3 +16,4 @@ admin.site.register(UnsatisfactoryMember)
 admin.site.register(PhysicalTrainingLeader)
 admin.site.register(UnitFitnessProgramManager)
 admin.site.register(UnitFitnessAssessmentCell)
+admin.site.register(SpecialMember)

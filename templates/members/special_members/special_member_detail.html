@@ -1,0 +1,28 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ ptl }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="display-4 mt-5 mb-3">{{ special_member }}</h1>
+        <div class="fs-5 mb-2">
+{#            <div class="row">#}
+{#                <div class="col-1">#}
+{#                    <div class="fs-2 my-3">#}
+{#                        <form action="{% url 'ptl_edit' ptl.pk %}" method="get">#}
+{#                            <input type="submit" value="Edit" class="btn btn-primary"></input>#}
+{#                        </form>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-1">#}
+{#                    <div class="fs-2 my-3">#}
+{#                        <form action="{% url 'ptl_delete' ptl.pk %}" method="get">#}
+{#                            <input type="submit" value="Delete" class="btn btn-danger"></input>#}
+{#                        </form>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+        </div>
+
+    </div>
+{% endblock %}

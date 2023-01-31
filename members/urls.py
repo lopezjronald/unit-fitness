@@ -22,4 +22,8 @@ urlpatterns = [
     path("ufacs/<int:pk>/", views.UnitFitnessAssessmentCellDetailView.as_view(), name="ufac_detail"),
     path("ufacs/new/", views.UnitFitnessAssessmentCellCreateView.as_view(), name="ufac_new"),
     path("ufacs/", views.UnitFitnessAssessmentCellListView.as_view(), name="ufac_list"),
+
+    # Special Member urls
+    path("special-members/<int:pk>/", views.SpecialMemberDetailView.as_view(), name="special_member_detail"),
+    path("special-members/", views.SpecialMemberListView.as_view(), name="special_member_list"),
 ]

@@ -2,8 +2,18 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import UnitFitnessAssessmentCell, UnitFitnessProgramManager, PhysicalTrainingLeader
+from .models import UnitFitnessAssessmentCell, UnitFitnessProgramManager, PhysicalTrainingLeader, SpecialMember
 
+# Special Member views
+class SpecialMemberListView(LoginRequiredMixin, ListView):
+    model = SpecialMember
+    template_name = "members/special_members/special_member_list.html"
+    context_object_name = "special_member_list"
+
+class SpecialMemberDetailView(LoginRequiredMixin, DetailView):
+    model = SpecialMember
+    template_name = "members/special_members/special_member_detail.html"
+    context_object_name = "special_member"
 
 # PTL views
 class PhysicalTrainingLeaderListView(LoginRequiredMixin, ListView):

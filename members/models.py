@@ -140,3 +140,16 @@ class NonCurrentMember(models.Model):
 
     def __str__(self):
         return f"{self.member}"
+
+
+class SpecialMember(Member):
+    comment = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Special Member"
+        verbose_name_plural = "Special Members"
+
+    def __str__(self):
+        return f"{self.rank} {self.first_name} {self.last_name}"
