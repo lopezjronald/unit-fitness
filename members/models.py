@@ -148,8 +148,11 @@ class SpecialMember(Member):
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
+        ordering = ("last_name", "first_name",)
+
+    class Meta:
         verbose_name = "Special Member"
         verbose_name_plural = "Special Members"
 
     def __str__(self):
-        return f"{self.rank} {self.first_name} {self.last_name}"
+        return f"{self.rank} {self.last_name}, {self.first_name} {self.middle_name}"
